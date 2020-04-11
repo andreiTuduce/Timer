@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TimerClient.TimerService;
 
 namespace TimerClient
 {
@@ -10,6 +8,16 @@ namespace TimerClient
     {
         static void Main(string[] args)
         {
+            int timerDuration = 15 * 60 * 1000;
+
+            if (args.Any())
+                timerDuration = int.Parse(args[0]);
+
+            TimerServiceClient timerServiceClient = new TimerServiceClient();
+
+            Console.WriteLine("Started timer!");
+            Console.WriteLine(timerDuration);
+            timerServiceClient.StartTimer(timerDuration);
         }
     }
 }
